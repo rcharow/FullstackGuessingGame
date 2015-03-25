@@ -1,24 +1,45 @@
 /******** LAYOUT *********/
+body {
+  background: #466368;
+  background: -webkit-linear-gradient(#A1D3B0, #f6f1d3);
+  background:    -moz-linear-gradient(#A1D3B0, #f6f1d3);
+  background:         linear-gradient(#A1D3B0, #f6f1d3);
+
+}
 .container {
 	padding-top: 20px;
 	width: 50%;
+	color: #134546;
+	
+}
+
+form
+{
+	margin: 0px auto;
 }
 
 .form-group {
 	width: 200px;
 	padding: 20px;
+
 }
 
 .guess-box {
-	border: solid 1px gray;
+	border: solid 1px white;
 	border-radius: 10px;
 	margin: 0px auto;
-	.center-block();
+
+	
 }
 
 /******** HEADINGS *********/
 h1 {
 	text-align: center;
+	color: #134546;
+}
+
+h4 small{
+	color: #134546;
 }
 
 p {
@@ -30,11 +51,23 @@ p {
 	width: 80%;
 	margin: 0 auto;
 	padding: 10px;
+	color: white;
+	
 }
 
+
+
+
+
 /******** FORMS *********/
-button {
+.btn {
 	padding: 5px;
+	color: #134546;
+	background: #f2f5f6;
+    background: -webkit-linear-gradient(#F2F9FE, #c8d7dc);
+    background:    -moz-linear-gradient(#F2F9FE, #c8d7dc);
+    background:         linear-gradient(#F2F9FE, #c8d7dc);
+
 }
 
 form {
