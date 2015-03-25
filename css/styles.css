@@ -1,0 +1,43 @@
+/******** LAYOUT *********/
+.container {
+	padding-top: 20px;
+	width: 50%;
+}
+
+.form-group {
+	width: 200px;
+	padding: 20px;
+}
+
+.guess-box {
+	border: solid 1px gray;
+	border-radius: 10px;
+	margin: 0px auto;
+	.center-block();
+}
+
+/******** HEADINGS *********/
+h1 {
+	text-align: center;
+}
+
+p {
+	padding: 20px;
+}
+
+.subtitle {
+	text-align: center;
+	width: 80%;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+/******** FORMS *********/
+button {
+	padding: 5px;
+}
+
+form {
+	padding: 0px 20px 20px 20px;
+	margin: 0 auto;
+}
