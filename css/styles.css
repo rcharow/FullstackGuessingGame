@@ -1,6 +1,6 @@
 /******** LAYOUT *********/
 body {
-  background: #466368;
+  background: #A1D3B0;
   background: -webkit-linear-gradient(#A1D3B0, #f6f1d3);
   background:    -moz-linear-gradient(#A1D3B0, #f6f1d3);
   background:         linear-gradient(#A1D3B0, #f6f1d3);
@@ -9,13 +9,9 @@ body {
 .container {
 	padding-top: 20px;
 	width: 50%;
+	height: 100%;
 	color: #134546;
 	
-}
-
-form
-{
-	margin: 0px auto;
 }
 
 .form-group {
@@ -25,9 +21,11 @@ form
 }
 
 .guess-box {
+	width: 80%;
 	border: solid 1px white;
 	border-radius: 10px;
 	margin: 0px auto;
+	background-color: rgba(255, 255, 255, .2);
 
 	
 }
@@ -50,14 +48,10 @@ p {
 	text-align: center;
 	width: 80%;
 	margin: 0 auto;
-	padding: 10px;
+	padding: 10px 0 50px 0;
 	color: white;
 	
 }
-
-
-
-
 
 /******** FORMS *********/
 .btn {
