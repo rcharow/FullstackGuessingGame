@@ -8,7 +8,7 @@ body {
 }
 .container {
 	padding-top: 20px;
-	width: 50%;
+	width: 60%;
 	height: 100%;
 	color: #134546;
 	
@@ -52,8 +52,50 @@ p {
 	color: white;
 	
 }
+/******** GRID *********/
+.col-sm-6 {
+	text-align: center;	
+}
+
+ul {
+	padding-top: 10px;
+}
+
+li {
+	font-weight: bold;
+}
+
+.cold {
+	color: navy;
+}
+
+.cool {
+	color: blue;
+}
+
+.warm {
+	color: orange;
+}
+
+.hot {
+	color: red;
+}
+
+.winner {
+	color: red;
+	font-size: 20px;
+}
 
 /******** FORMS *********/
+.formDiv {
+	padding: 20px;
+	margin: 0 auto;
+}
+.btnBox {
+	width: 90%;
+	margin: 0 auto;
+	padding: 10px;
+}
 .btn {
 	padding: 5px;
 	color: #134546;
@@ -61,10 +103,5 @@ p {
     background: -webkit-linear-gradient(#F2F9FE, #c8d7dc);
     background:    -moz-linear-gradient(#F2F9FE, #c8d7dc);
     background:         linear-gradient(#F2F9FE, #c8d7dc);
-
-}
-
-form {
-	padding: 0px 20px 20px 20px;
-	margin: 0 auto;
+    margin: 0 auto;
 }
