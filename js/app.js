@@ -69,7 +69,7 @@ function guessSubmit()
 			if (numGuesses===0)
 				message = "You're burning up!";
 			else if (diff<prevDiff)
-				message = "You're burning up even hotter than before!";
+				message = "You're burning up and you're closer than the last guess!";
 			else if (diff>prevDiff)
 				message = "You're burning up, but you were closer last time!.";
 			else
