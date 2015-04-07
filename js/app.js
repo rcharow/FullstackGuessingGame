@@ -1,7 +1,4 @@
-var answer;
-var numGuesses;
-var guesses;
-var prevGuess;
+var app;
 
 $(document).ready(init);
 
@@ -10,18 +7,19 @@ function init()
 	$("#btnGuess").on("click", guessSubmit);
 	$("#btnAgain").on("click", initGame);
 	$("#btnHint").on("click", getHint);
+	app = {};
 	initGame();
 }
 
 
 function initGame()
 {
-	numGuesses = 0;
-	guesses = [];
-	prevGuess = "";
+	app.numGuesses = 0;
+	app.guesses = [];
+	app.prevGuess = "";
 	$("#playerGuess").val(null);
 	$(".guess-list").empty();
-	answer = Math.floor((Math.random() * 100) + 1);
+	app.answer = Math.floor((Math.random() * 100) + 1);
 	$("#btnGuess").removeClass("disabled");
 	$(".guess-box").removeClass("success");
 	$("#message").text("Ready to play? You have 5 guesses.");
@@ -32,6 +30,7 @@ function guessSubmit()
 	var guess = $("#playerGuess").val();
 	var valid = true;
 	var temp; 
+	var message;
 	$("#playerGuess").val(null);
 
 	if (/^\+?(0|[1-9]\d*)$/.test(guess)===false)
@@ -44,12 +43,12 @@ function guessSubmit()
 		message = "Guess a number betwee 1 and 100.";
 		valid = false;
 	}
-	else if (guesses.indexOf(guess)!==-1)
+	else if (app.guesses.indexOf(guess)!==-1)
 	{
 		message = "You already guessed that number.";
 		valid = false;
 	}
-	else if (guess==answer)
+	else if (guess==app.answer)
 	{
 		$("#message").text("Hooray! You guessed right!");
 		$(".guess-list").empty();
@@ -60,37 +59,38 @@ function guessSubmit()
 	}
 	else
 	{
-		var diff = Math.abs(answer-guess);
-		var prevDiff = Math.abs(answer-prevGuess);
+		var diff = Math.abs(app.answer-guess);
+		var prevDiff = Math.abs(app.answer-app.prevGuess);
 		var message = "";
 		if (diff<=5)
 		{
 			temp = "hot";
-			if (numGuesses===0)
+			if (app.numGuesses===0)
 				message = "You're burning up!";
 			else if (diff<prevDiff)
 				message = "You're burning up and you're closer than the last guess!";
 			else if (diff>prevDiff)
-				message = "You're burning up, but you were closer last time!.";
+				message = "You're burning up, but you were closer last time!";
 			else
 				message = "You're burning up and you're just as close as the last guess!"
+
 		}
 		else if (diff<=10)
 		{
 			temp = "warm";
-			if (numGuesses===0)
+			if (app.numGuesses===0)
 				message = "It's getting hot in here!";
 			else if (diff<prevDiff)
 				message = "You're getting hot and if feels toastier than last guess!";
 			else if (diff>prevDiff)
-				message = "You're getting hot but you were closer last time!.";
+				message = "You're getting hot but you were closer last time!";
 			else
 				message = "You're getting hot and you're just as close as the last guess!"
 		}
 		else if (diff<=20)
 		{
 			temp = "cool";
-			if (numGuesses===0)
+			if (app.numGuesses===0)
 				message = "You're pretty cool...in a bad way."
 			else if (diff<prevDiff)
 				message = "You're pretty cool...in a bad way. But it's better than the last guess.";
@@ -102,7 +102,7 @@ function guessSubmit()
 		else
 		{
 			temp = "cold";
-			if (numGuesses===0)
+			if (app.numGuesses===0)
 				message = "It's really cold in here!";
 			else if (diff<prevDiff)
 				message = "It's really cold in here, but you're less frigid than before.";
@@ -111,21 +111,23 @@ function guessSubmit()
 			else
 				message = "It's really cold in here! But at least you're just as close as before.";
 		}
+
+		message += " " + higherLowerCheck(app.answer,guess);
 	}
 
 	if(valid)
 	{
-		numGuesses++;
-		guesses.push(guess);
-		prevGuess = guess;
+		app.numGuesses++;
+		app.guesses.push(guess);
+		app.prevGuess = guess;
 		addGuess(guess,temp);
 	}
 		
 
-	var guessesLeft = 5-numGuesses;
+	var guessesLeft = 5-app.numGuesses;
 	if (guessesLeft<=0)
 	{
-		$("#message").text("Bummer, no more guesses left! The correct answer was " + answer);
+		$("#message").text("Bummer, no more guesses left! The correct answer was " + app.answer);
 		$("#btnGuess").addClass("disabled");
 		//initGame();
 	}
@@ -138,11 +140,19 @@ function guessSubmit()
 
 function getHint()
 {
-	$("#message").text("The correct answer is " + answer);
+	$("#message").text("The correct answer is " + app.answer);
 }
 
 function addGuess(num,temp)
 {
 	var liItem = $("<li class='" + temp + "'>" + num + "</li>").css("display","inline").hide().fadeIn(2000);
 	$(".guess-list").append(liItem);
+}
+
+function higherLowerCheck(answer,guess)
+{
+	if(answer>guess)
+		return "Try guessing higher.";
+	else 
+		return "Try guessing lower.";
 }
