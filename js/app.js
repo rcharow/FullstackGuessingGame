@@ -28,10 +28,12 @@ function initGame()
 	app.numGuesses = 0;
 	app.guesses = [];
 	app.prevGuess = "";
+	$("#playerGuess").focus();
 	$("#playerGuess").val(null);
 	$(".guess-list").empty();
 	app.answer = Math.floor((Math.random() * 100) + 1);
 	$("#btnGuess").removeClass("disabled");
+	$("#playerGuess").attr("disabled",null);
 	$(".guess-box").removeClass("success");
 	$("#message").text("Ready to play? You have 5 guesses.");
 }
@@ -56,7 +58,7 @@ function guessSubmit()
 	}
 	else if (app.guesses.indexOf(guess)!==-1)
 	{
-		message = "You already guessed that number.";
+		message = "Oops, you already guessed that number. Guess again.";
 		valid = false;
 	}
 	else if (guess==app.answer)
@@ -65,6 +67,7 @@ function guessSubmit()
 		$(".guess-list").empty();
 		addGuess(guess,"winner");
 		$("#btnGuess").addClass("disabled");
+		$("#playerGuess").attr("disabled","disabled");
 		$(".guess-box").addClass("success");
 		return;
 	}
