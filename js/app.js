@@ -1,10 +1,21 @@
 var app;
 
+//Bind pressing the Enter key to the onEnter function
+(function($) {
+    $.fn.onEnter = function(func) {
+        this.bind('keypress', function(e) {
+            if (e.keyCode == 13) func.apply(this, [e]);    
+        });               
+        return this; 
+     };
+})(jQuery);
+
 $(document).ready(init);
 
 function init()
 {
 	$("#btnGuess").on("click", guessSubmit);
+	$("#playerGuess").onEnter(guessSubmit);
 	$("#btnAgain").on("click", initGame);
 	$("#btnHint").on("click", getHint);
 	app = {};
